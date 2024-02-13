@@ -13,15 +13,19 @@
         <h1>Weather Dashboard</h1>
 
     </header>
-    <main class="row" style="border:1px solid red">
-        <aside class="col-3" style="border: 1px solid green;">
+    <main class="row">
+        <aside class="col-3">
+        <h2>Search for a City:</h2>
         <input id="city" type="text">
         <button id="search" type="button">search</button>
         <div class="list-group"></div>
         </aside>
-        <div class="col-9" style="border: 1px solid purple;"> 
+        <div class="col-9"> 
         <div class="row" id="weather"></div>
-        <div class="row"></div>
+        <div class="row hide" id="row-title">
+        <h2>5 Day Forecast:</h2>
+        </div>
+        <div class="row" id="forecast"></div>
         </div>
         
 

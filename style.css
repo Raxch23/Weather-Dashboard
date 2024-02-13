@@ -1,0 +1,20 @@
+#forecast {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+body {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+.hide {
+    display: none;
+}
+
+header {
+    text-align: center;
+    background-image: linear-gradient(to top right,  #4b5352, #4b535284);
+    padding: 2em 0
+}

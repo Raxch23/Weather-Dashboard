@@ -29,9 +29,25 @@ function getweather(lat,lon){
     }).then(function(data){
         console.log(data)
        displayweather(data)
+       getforecast(lat,lon)
     })
 }
-function getforcast(){}
+function getforecast(lat, lon){
+    var weatherurl="https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&units=metric&appid="+apikey
+    fetch(weatherurl).then(function(response){
+        return response.json()
+    }).then(function(data){
+        var forecastArray=[]
+        for(var i=0; i<data.list.length;i++){
+        var timeofday=data.list[i].dt_txt.split(" ")[1]
+        if(timeofday==="12:00:00"){
+        forecastArray.push(data.list[i])
+        }
+
+        }
+        displayforecast(forecastArray)
+    })
+}
 function displayweather(data){
 document.getElementById("weather").innerHTML=""
     var card=document.createElement("div")
@@ -67,7 +83,36 @@ document.getElementById("weather").innerHTML=""
 
     document.getElementById("weather").appendChild(card)
 }
-function displayforcast(){}
+function displayforecast(data){
+    var rowTitle=document.getElementById("row-title")
+    rowTitle.classList.remove("hide")
+   document.getElementById("forecast").innerHTML=""
+    for (var i=0; i<data.length;i++){
+        var col=document.createElement("div")
+        col.setAttribute("class", "col-2")
+
+        var card=document.createElement("div")
+        card.style.backgroundColor="lightblue"
+
+        var dateDisplay =document.createElement("p")
+        dateDisplay.textContent=dayjs.unix(data[i].dt).format("(DD/MM/YYYY)")
+        var temp=document.createElement("p")
+    
+        temp.textContent="Temperature: "+data [i].main.temp
+        var image= document.createElement("img")
+        image.setAttribute("src", "https://openweathermap.org/img/wn/"+data [i].weather[0].icon+"@2x.png")
+
+        var humidity=document.createElement("p")
+        humidity.textContent="Humidity: "+data [i].main.humidity
+
+        var wind=document.createElement("p")
+        wind.textContent="Wind: "+data [i].wind.speed
+    
+        card.append(dateDisplay, image,temp, humidity, wind)
+        col.append(card)
+        document.getElementById("forecast").append(col)
+    }
+}
 function buildmenu(){
     document.querySelector(".list-group").innerHTML=""
     for(var i=0;i<pastCity.length;i++){
