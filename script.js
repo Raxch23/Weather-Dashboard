@@ -1,5 +1,7 @@
 //get value of input when you user clicks search button
-var searchBtn=document.getElementById("search")
+var searchBtn=document.getElementById("search");
+searchBtn.style.backgroundColor="#8BB8FD";
+searchBtn.style.color="white";
 var apikey="0951c140a5a0e650ef6526899053f896"
 var pastCity=JSON.parse(localStorage.getItem("pastcity"))||[]
 searchBtn.addEventListener("click",function(){
@@ -64,7 +66,7 @@ document.getElementById("weather").innerHTML=""
     dateDisplay.textContent=dayjs.unix(data.dt).format("(DD/MM/YYYY)")
 
     var temp=document.createElement("h4")
-    temp.textContent="Temperature: "+data.main.temp
+    temp.textContent="Temp: "+data.main.temp
 
     var humidity=document.createElement("h4")
     humidity.textContent="Humidity: "+data.main.humidity
@@ -92,21 +94,27 @@ function displayforecast(data){
         col.setAttribute("class", "col-2")
 
         var card=document.createElement("div")
-        card.style.backgroundColor="lightblue"
+        card.style.backgroundColor="#102B55"
 
         var dateDisplay =document.createElement("p")
-        dateDisplay.textContent=dayjs.unix(data[i].dt).format("(DD/MM/YYYY)")
+        dateDisplay.textContent=dayjs.unix(data[i].dt).format("DD/MM/YYYY")
+        dateDisplay.style.color="white";
+        dateDisplay.style.fontWeight="bold";
         var temp=document.createElement("p")
     
-        temp.textContent="Temperature: "+data [i].main.temp
+        temp.textContent="Temp: "+data [i].main.temp
+        temp.style.color="white";
         var image= document.createElement("img")
         image.setAttribute("src", "https://openweathermap.org/img/wn/"+data [i].weather[0].icon+"@2x.png")
 
         var humidity=document.createElement("p")
         humidity.textContent="Humidity: "+data [i].main.humidity
+        humidity.style.color="white";
 
         var wind=document.createElement("p")
         wind.textContent="Wind: "+data [i].wind.speed
+        wind.style.color="white";
+        
     
         card.append(dateDisplay, image,temp, humidity, wind)
         col.append(card)
