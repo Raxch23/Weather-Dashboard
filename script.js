@@ -53,7 +53,7 @@ function getforecast(lat, lon){
 function displayweather(data){
 document.getElementById("weather").innerHTML=""
     var card=document.createElement("div")
-    card.setAttribute("class", "card")
+    card.style.border="1px solid black"
 
     var cardHeader =document.createElement("div")
     cardHeader.style.display="flex"
@@ -66,16 +66,16 @@ document.getElementById("weather").innerHTML=""
     dateDisplay.textContent=dayjs.unix(data.dt).format("(DD/MM/YYYY)")
 
     var temp=document.createElement("h4")
-    temp.textContent="Temp: "+data.main.temp
+    temp.textContent="Temp: "+Math.round(data.main.temp)+String.fromCharCode(176)+"C"
 
     var humidity=document.createElement("h4")
-    humidity.textContent="Humidity: "+data.main.humidity
+    humidity.textContent="Humidity: "+data.main.humidity+"%"
 
     var wind=document.createElement("h4")
-    wind.textContent="Wind: "+data.wind.speed
+    wind.textContent="Wind: "+data.wind.speed+" KPH"
 
     var image= document.createElement("img")
-    image.setAttribute("src", "https://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png")
+    image.setAttribute("src", "https://openweathermap.org/img/wn/"+data.weather[0].icon+".png")
 
     cardHeader.append(cardTitle, dateDisplay, image)
 
@@ -91,8 +91,9 @@ function displayforecast(data){
    document.getElementById("forecast").innerHTML=""
     for (var i=0; i<data.length;i++){
         var col=document.createElement("div")
-        col.setAttribute("class", "col-2")
-
+        col.setAttribute("class", "test")
+        
+        //col.style.width="20%"
         var card=document.createElement("div")
         card.style.backgroundColor="#102B55"
 
@@ -102,17 +103,17 @@ function displayforecast(data){
         dateDisplay.style.fontWeight="bold";
         var temp=document.createElement("p")
     
-        temp.textContent="Temp: "+data [i].main.temp
+        temp.textContent="Temp: "+Math.round(data [i].main.temp)+String.fromCharCode(176)+"C"
         temp.style.color="white";
         var image= document.createElement("img")
-        image.setAttribute("src", "https://openweathermap.org/img/wn/"+data [i].weather[0].icon+"@2x.png")
+        image.setAttribute("src", "https://openweathermap.org/img/wn/"+data [i].weather[0].icon+".png")
 
         var humidity=document.createElement("p")
-        humidity.textContent="Humidity: "+data [i].main.humidity
+        humidity.textContent="Humidity: "+data [i].main.humidity+"%"
         humidity.style.color="white";
 
         var wind=document.createElement("p")
-        wind.textContent="Wind: "+data [i].wind.speed
+        wind.textContent="Wind: "+data [i].wind.speed+" KPH"
         wind.style.color="white";
         
     

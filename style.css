@@ -1,14 +1,23 @@
+*{
+    box-sizing: border-box;
+}
 #forecast {
     display: flex;
     justify-content: space-between;
     margin-top: 1rem;
+    
 }
-
+.test {
+    width: 20%;
+}
 body {
-    width: 90vw;
+    width: 90%;
     margin: 0 auto;
 }
 
+main {
+    width: 100%;
+}
 .hide {
     display: none;
 }
@@ -16,5 +25,34 @@ body {
 header {
     text-align: center;
     background-image: linear-gradient(to top right,  #053A89, #251F5A);
-    padding: 2em 0
+    padding: 2em 0; 
+    margin-bottom: 1em;
 }
+#row-title {
+    margin-top: 1em;
+}
+aside input {
+    width: 100%;
+    margin: 1rem 0;
+}
+aside button{
+    width: 100%;
+}
+.list-group {
+    margin:1rem 0;
+    padding: 0 1rem;
+    border-radius: 0;
+}
+.list-group button {
+    margin: 5px;
+    background-color: grey;
+}
+@media screen and (max-width: 1000px) {
+   #forecast{
+    flex-direction: column;
+   }
+   .test {
+    width: 100%;
+   }
+
+  }
