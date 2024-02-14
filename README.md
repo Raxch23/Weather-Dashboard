@@ -1,4 +1,5 @@
 ##Project title: Weather-Dashboard
+
 ##Overview
 The task was to build a weather dashboard that would run in the browser and feature dynamically updated HTML and CSS. We had to use the 5-Day Weather Forecast to retrieve city weather data.
 
