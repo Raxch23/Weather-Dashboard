@@ -9,7 +9,7 @@ searchBtn.addEventListener("click",function(){
     getcoords(cityname)
 })
 function getcoords(name){
-    var geourl="http://api.openweathermap.org/geo/1.0/direct?q="+name+"&limit=5&appid="+apikey;
+    var geourl="https://api.openweathermap.org/geo/1.0/direct?q="+name+"&limit=5&appid="+apikey;
     fetch(geourl).then(function(response){
         return response.json()
     }).then(function(data){
